@@ -145,7 +145,7 @@ namespace Lab2CSharp
             }
         }
 
-        static int[][] Input()
+static int[][] Input()
         {
             Console.WriteLine("Enter the length of the array:");
             Console.Write("n = ");
@@ -153,26 +153,32 @@ namespace Lab2CSharp
             int[][] a = new int[n][];
             for (int i = 0; i < n; ++i)
             {
-                a[i] = new int[n];
-                for (int j = 0; j < n; ++j)
+                Console.WriteLine($"Enter the length of row {i + 1}:");
+                Console.Write($"Length of row {i + 1} = ");
+                int rowLength = int.Parse(Console.ReadLine());
+                a[i] = new int[rowLength];
+                for (int j = 0; j < rowLength; ++j)
                 {
-                    Console.Write("a[{0},{1}]= ", i, j);
+                    Console.Write($"a[{i},{j}]= ");
                     a[i][j] = int.Parse(Console.ReadLine());
                 }
             }
             return a;
         }
+
         static void Print1(int[] a)
         {
             for (int i = 0; i < a.Length; ++i)
                 Console.Write("{0,5} ", a[i]);
         }
+
         static void Print2(int[][] a)
         {
             for (int i = 0; i < a.Length; ++i, Console.WriteLine())
                 for (int j = 0; j < a[i].Length; ++j)
                     Console.Write("{0,5} ", a[i][j]);
         }
+
         static int Pare(int[] a)
         {
             int pare = a[0];
@@ -184,13 +190,13 @@ namespace Lab2CSharp
         static void Task4()
         {
             int[][] myArray = Input();
-            Console.WriteLine("Вихідний масив:");
+            Console.WriteLine("Original array:");
             Print2(myArray);
-            int[] rez = new int[myArray.Length];
+            int[] result = new int[myArray.Length];
             for (int i = 0; i < myArray.Length; ++i)
-                rez[i] = Pare(myArray[i]);
-            Console.WriteLine("Новий массив:");
-            Print1(rez);
+                result[i] = Pare(myArray[i]);
+            Console.WriteLine("New array:");
+            Print1(result);
         }
 
 
