@@ -93,8 +93,57 @@ namespace Lab2CSharp
             }
         }
 
-        // Метод для знаходження номеру останнього максимального елемента в масиві
+        static void Task3()
+        {
+            Console.WriteLine("Enter the size of the square matrix (n):");
+            int n = Convert.ToInt32(Console.ReadLine());
 
+            int[,] matrix = new int[n, n];
+
+            // Введення елементів матриці
+            Console.WriteLine("Enter the elements of the matrix:");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write($"matrix[{i},{j}]: ");
+                    matrix[i, j] = Convert.ToInt32(Console.ReadLine());
+                }
+            }
+
+            // Поміняти місцями стовпці відповідно до умови
+            int middleColumn = n / 2;
+            if (n % 2 == 0) // Кількість стовпців парна
+            {
+                SwapColumns(matrix, middleColumn - 1, middleColumn);
+            }
+            else // Кількість стовпців непарна
+            {
+                SwapColumns(matrix, 0, middleColumn);
+            }
+
+            // Виведення результату
+            Console.WriteLine("Result:");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void SwapColumns(int[,] matrix, int col1, int col2)
+        {
+            int n = matrix.GetLength(0);
+            for (int i = 0; i < n; i++)
+            {
+                int temp = matrix[i, col1];
+                matrix[i, col1] = matrix[i, col2];
+                matrix[i, col2] = temp;
+            }
+        }
 
 
         static void Main(string[] args)
@@ -106,13 +155,13 @@ namespace Lab2CSharp
 
             Console.Write("n=");
 
-            byte n = byte.Parse(Console.ReadLine());
+            byte n = Convert.ToByte(Console.ReadLine());
 
             switch (n)
             {
                 case 1: Console.WriteLine("You choise task 1"); Task1(); break;
                 case 2: Console.WriteLine("You choise task 2"); Task2(); break;
-                case 3: Console.WriteLine("You choise task 3"); ; break;
+                case 3: Console.WriteLine("You choise task 3"); Task3(); break;
                 case 4: Console.WriteLine("You choise task 4"); ; break;
 
             }
