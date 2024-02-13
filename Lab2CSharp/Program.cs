@@ -145,6 +145,54 @@ namespace Lab2CSharp
             }
         }
 
+        static int[][] Input()
+        {
+            Console.WriteLine("Enter the length of the array:");
+            Console.Write("n = ");
+            int n = int.Parse(Console.ReadLine());
+            int[][] a = new int[n][];
+            for (int i = 0; i < n; ++i)
+            {
+                a[i] = new int[n];
+                for (int j = 0; j < n; ++j)
+                {
+                    Console.Write("a[{0},{1}]= ", i, j);
+                    a[i][j] = int.Parse(Console.ReadLine());
+                }
+            }
+            return a;
+        }
+        static void Print1(int[] a)
+        {
+            for (int i = 0; i < a.Length; ++i)
+                Console.Write("{0,5} ", a[i]);
+        }
+        static void Print2(int[][] a)
+        {
+            for (int i = 0; i < a.Length; ++i, Console.WriteLine())
+                for (int j = 0; j < a[i].Length; ++j)
+                    Console.Write("{0,5} ", a[i][j]);
+        }
+        static int Pare(int[] a)
+        {
+            int pare = a[0];
+            for (int i = 1; i < a.Length; ++i)
+                if (a[i] % 2 == 0) { pare = a[i]; }
+            return pare;
+        }
+
+        static void Task4()
+        {
+            int[][] myArray = Input();
+            Console.WriteLine("Вихідний масив:");
+            Print2(myArray);
+            int[] rez = new int[myArray.Length];
+            for (int i = 0; i < myArray.Length; ++i)
+                rez[i] = Pare(myArray[i]);
+            Console.WriteLine("Новий массив:");
+            Print1(rez);
+        }
+
 
         static void Main(string[] args)
         {
@@ -162,7 +210,7 @@ namespace Lab2CSharp
                 case 1: Console.WriteLine("You choise task 1"); Task1(); break;
                 case 2: Console.WriteLine("You choise task 2"); Task2(); break;
                 case 3: Console.WriteLine("You choise task 3"); Task3(); break;
-                case 4: Console.WriteLine("You choise task 4"); ; break;
+                case 4: Console.WriteLine("You choise task 4"); Task4(); break;
 
             }
 
