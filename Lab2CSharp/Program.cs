@@ -5,16 +5,16 @@ namespace Lab2CSharp
     internal class Program
     {
 
-        static void task1()
+        static void Task1()
         {
             Console.WriteLine("You choise task 1:");
-            Console.WriteLine("Input size of array 1");
+            Console.WriteLine("Enter the length of the array 1");
             int n = Convert.ToInt32(Console.ReadLine());
             int[] a = new int[n];
             Console.WriteLine("Input ellemnts of array 1:");
             for (int i = 0; i < n; i++)
             {
-                Console.Write("a[{0}]= ", i);
+                Console.Write($"Enter element {i + 1}: ");
                 a[i] = Convert.ToInt32(Console.ReadLine());
             }
 
@@ -30,7 +30,7 @@ namespace Lab2CSharp
 
             Console.WriteLine(count1);
 
-            Console.WriteLine("Розмірність масиву ");
+            Console.WriteLine("Enter the length of the array 2 ");
             Console.Write("n = ");
             n = Convert.ToInt32(Console.ReadLine());
             Console.Write("m = ");
@@ -51,8 +51,52 @@ namespace Lab2CSharp
 
             Console.WriteLine(count2);
 
-
         }
+
+        //---------------------------------------------------------------//
+
+        static void Task2()
+        {
+            Console.WriteLine("Enter the length of the array:");
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            int[] a = new int[n];
+
+            // Введення елементів масиву
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"Enter element {i + 1}: ");
+                a[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            // Знаходження номеру останнього максимального елемента
+            int lastIndex = 0;
+            int maxElement = a[0];
+
+            // Перебираємо всі елементи масиву
+            for (int i = 1; i < a.Length; i++)
+            {
+                if (a[i] >= maxElement)
+                {
+                    maxElement = a[i];
+                    lastIndex = i;
+                }
+            }
+
+            if (lastIndex != -1)
+            {
+                Console.WriteLine($"The index of the last maximum element is: {lastIndex}");
+            }
+            else
+            {
+                Console.WriteLine("Array is empty!");
+            }
+        }
+
+        // Метод для знаходження номеру останнього максимального елемента в масиві
+
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("Lab 2 CSharp");
@@ -66,8 +110,8 @@ namespace Lab2CSharp
 
             switch (n)
             {
-                case 1: Console.WriteLine("You choise task 1"); task1(); break;
-                case 2: Console.WriteLine("You choise task 2"); ; break;
+                case 1: Console.WriteLine("You choise task 1"); Task1(); break;
+                case 2: Console.WriteLine("You choise task 2"); Task2(); break;
                 case 3: Console.WriteLine("You choise task 3"); ; break;
                 case 4: Console.WriteLine("You choise task 4"); ; break;
 
@@ -76,3 +120,4 @@ namespace Lab2CSharp
         }
     }
 }
+
